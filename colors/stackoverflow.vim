@@ -1,7 +1,8 @@
 " =============================================================================
 " File:        stackoverflow.vim
 " Description: Vim color scheme file
-" Maintainer:  Paul Sampi;
+" Filenames:	*.java *.txt 
+" " Maintainer:  Paul Sampi;
 " =============================================================================
 set background=light
 highlight clear
@@ -15,6 +16,7 @@ hi ColorColumn  guifg=NONE              guibg=#e6e6e6
 hi Cursor       guifg=bg                guibg=#F4A83D           gui=NONE
 hi CursorIM     guifg=bg                guibg=fg                gui=NONE
 hi lCursor      guifg=bg                guibg=fg                gui=NONE
+hi CursorLine   gui=reverse
 hi DiffAdd      guifg=NONE              guibg=#9d9d9d           gui=NONE
 hi DiffChange   guifg=NONE              guibg=#d1d1d1           gui=NONE
 hi DiffDelete   guifg=NONE              guibg=#d8d8d5           gui=NONE
@@ -27,7 +29,7 @@ hi Folded       guifg=#555555           guibg=#acacac           gui=italic
 hi IncSearch    guifg=black             guibg=#adadad          gui=NONE
 hi Search       guifg=black             guibg=#adadad          gui=NONE
 hi LineNr       guifg=#A0A0A0           guibg=NONE             gui=NONE
-hi MatchParen   guifg=black             guibg=#D1C4A3          gui=bold
+hi MatchParen   guifg=fg                guibg=#D1C4A3          gui=bold
 hi ModeMsg      guifg=White             guibg=#767676          gui=bold
 hi MoreMsg      guifg=#7c7c7c           guibg=bg               gui=bold
 hi NonText      guifg=#7e7e7e           guibg=bg               gui=bold
@@ -136,14 +138,34 @@ hi javaScript           guifg=fg         guibg=NONE
 hi link javaScriptFunction Statement
 hi link javaScriptMember Statement
 hi link javaScriptValue Constant
+hi javaScriptType guifg=#257E9F 
 
-hi javaParenT           guifg=#257E9F    guibg=NONE    gui=NONE
+
+hi link javaSpecialChar Constant
+hi javaParenT           guifg=fg         guibg=NONE    gui=NONE
 hi javaFold             guifg=#257E9F    guibg=NONE    gui=NONE
-hi link javaAnnotation       Constant
+" syn match javaFold /\w\+_\=[A-Z]\w\+/
+" syn match javaFold /\s\+[A-Z]\w\+\s*/
+" syn match javaFold /^[A-Z]\w\+\s*/
+" syn match javaParenT /\w\+()/
+
+
+hi link javaAnnotation  Constant
 hi link javaType Statement
+hi link javaConstant Statement
+hi link javaCharacter Statement
+
+hi link javaNumber Constant
+hi link javaExternal Statement
 
 hi link cppStatement  Statement
 hi cBlock               guifg=#257E9F    guibg=NONE    gui=NONE
+" hi cType                guifg=#257E9F    guibg=NONE    gui=NONE
+
+" syn match cBlock /\w\+_\=[A-Z]\w\+/
+" syn match cBlock /\s\+[A-Z]\w\+\s*/
+" syn match cBlock /^[A-Z]\w\+\s*/
+" syn match cBlock /\w\+()/
 
 hi link objcClass Type
 hi link cocoaClass objcClass
@@ -153,3 +175,11 @@ hi link cocoaFunction Function
 hi link objcMethodName Identifier
 hi link objcMethodArg Normal
 hi link objcMessageName Identifier
+
+hi mTag guifg=#257E9F
+hi nTag guifg=fg
+syn match mTag /\w\+_\=[A-Z]\w\+/
+syn match mTag /\s\+[A-Z]\w\+\s*/
+syn match  mTag /^[A-Z]\w\+\s*/
+syn match nTag /\w\+()/
+
